@@ -13,6 +13,6 @@ options:
   - Ada seseorang di dalam rumah yang berpura-pura menjadi anggota keluarga Raka.
   - Ibu Raka berbohong tentang keberadaan mereka.
 date: 2026-08-17T11:49:00.000+07:00
-published: false
+published: true
 ---
 > Draft. Buka entri ini lewat /admin buat nulis riddle-nya, tambahin pilihan jawaban, lalu nyalain "Tayangkan?".
