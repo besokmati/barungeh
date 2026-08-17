@@ -1,17 +1,32 @@
 # ============================================================
-#  KONFIG CMS — 3 baris di bawah WAJIB diganti dgn nilai dari
-#  DecapBridge (Dashboard > Site kamu). Lihat README-CMS.txt.
+#  KONFIG CMS — auth via DecapBridge (PKCE)
 # ============================================================
+
+# Use DecapBridge PKCE auth (required)
 backend:
   name: git-gateway
-  repo: GANTI-USERNAME/barungeh          # <- dari DecapBridge
+  repo: besokmati/barungeh
   branch: main
-  identity_url: https://auth.decapbridge.com/sites/GANTI-SITE-ID   # <- dari DecapBridge
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/eb98caab-c457-4e63-8259-f0395d869965/pkce
+  auth_token_endpoint: /sites/eb98caab-c457-4e63-8259-f0395d869965/token
   gateway_url: https://gateway.decapbridge.com
+
+  # See who did what (optional)
   commit_messages:
-    create: 'Tambah {{collection}} "{{slug}}" via CMS'
-    update: 'Update {{collection}} "{{slug}}" via CMS'
-    delete: 'Hapus {{collection}} "{{slug}}" via CMS'
+    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+
+# Enable PKCE fields (optional, recommended)
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
 
 site_url: https://barungeh.netlify.app
 display_url: https://barungeh.netlify.app
@@ -45,7 +60,6 @@ collections:
       - { label: Tanggal, name: date, widget: datetime }
       - { label: "Tayangkan sekarang?", name: published, widget: boolean, default: false }
       - { label: "Isi riddle", name: body, widget: markdown }
-
   - name: cerita
     label: Cerita
     label_singular: Cerita
