@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig){
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy({ "src/_netlify/form-detect.html": "form-detect.html" });
 
   const CATSLUG = {
     "horror":"horror","horror riddle":"horror","mystery":"mystery",
