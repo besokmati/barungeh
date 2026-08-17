@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+title: "Cerita"
+description: "Kumpulan cerita horror, misteri, psychological, urban legend, detective, dan paranormal dalam Bahasa Indonesia."
+---
+<section class="page-hero"><div class="eyebrow">Cerita</div><h1>Baca pelan.<br><span class="text-red">Jangan percaya</span> semuanya.</h1><p>Kumpulan horror, misteri, psychological, urban legend, detective, dan paranormal dalam Bahasa Indonesia.</p></section>
+<div class="filterbar"><button class="chip active" data-filter="all">Semua</button><button class="chip" data-filter="horror">Horror</button><button class="chip" data-filter="mystery">Mystery</button><button class="chip" data-filter="psychological">Psychological</button><button class="chip" data-filter="urbanlegend">Urban Legend</button><button class="chip" data-filter="detective">Detective</button><button class="chip" data-filter="paranormal">Paranormal</button></div>
+{% set items = collections.ceritaPub %}
+{% if items.length %}<section class="list">
+{% for p in items %}<a class="story-row" data-tags="{{ p.data.category | catSlug }}" href="{{ p.url }}"><div class="idx">{{ loop.index | pad2 }}</div><div><h3>{{ p.data.title }}</h3><p>{{ p.data.excerpt }}</p></div><span class="tag">{{ p.data.category | upper }}</span></a>{% endfor %}
+</section>{% else %}<p style="color:#8b8883;padding:40px 0">Belum ada cerita yang tayang. Lagi digodok.</p>{% endif %}

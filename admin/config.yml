@@ -1,0 +1,65 @@
+# ============================================================
+#  KONFIG CMS — 3 baris di bawah WAJIB diganti dgn nilai dari
+#  DecapBridge (Dashboard > Site kamu). Lihat README-CMS.txt.
+# ============================================================
+backend:
+  name: git-gateway
+  repo: GANTI-USERNAME/barungeh          # <- dari DecapBridge
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/GANTI-SITE-ID   # <- dari DecapBridge
+  gateway_url: https://gateway.decapbridge.com
+  commit_messages:
+    create: 'Tambah {{collection}} "{{slug}}" via CMS'
+    update: 'Update {{collection}} "{{slug}}" via CMS'
+    delete: 'Hapus {{collection}} "{{slug}}" via CMS'
+
+site_url: https://barungeh.netlify.app
+display_url: https://barungeh.netlify.app
+logo_url: https://barungeh.netlify.app/assets/favicon.png
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+locale: 'id'
+
+collections:
+  - name: riddle
+    label: Riddle
+    label_singular: Riddle
+    folder: src/riddle
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}  [{{#if published}}TAYANG{{else}}draft{{/if}}]"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Kategori, name: category, widget: select, default: Horror Riddle,
+          options: [Horror Riddle, Detective, Psychological, Paranormal, Urban Legend, Mystery] }
+      - { label: "Tingkat kesulitan (1-5)", name: difficulty, widget: number, value_type: int, min: 1, max: 5, default: 4 }
+      - { label: "Ringkasan (muncul di kartu)", name: excerpt, widget: string }
+      - { label: "Kalimat pembuka (opsional)", name: lead, widget: string, required: false }
+      - { label: "Reveal setelah (hari)", name: revealDays, widget: number, value_type: int, default: 7 }
+      - { label: "Jumlah diskusi (angka tampilan)", name: discussions, widget: number, value_type: int, default: 0, required: false }
+      - { label: "Pilihan jawaban (buat voting)", name: options, widget: list, required: false,
+          field: { label: Pilihan, name: choice, widget: string } }
+      - { label: Tanggal, name: date, widget: datetime }
+      - { label: "Tayangkan sekarang?", name: published, widget: boolean, default: false }
+      - { label: "Isi riddle", name: body, widget: markdown }
+
+  - name: cerita
+    label: Cerita
+    label_singular: Cerita
+    folder: src/cerita
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}  [{{#if published}}TAYANG{{else}}draft{{/if}}]"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Kategori, name: category, widget: select, default: Horror,
+          options: [Horror, Mystery, Psychological, Urban Legend, Detective, Paranormal] }
+      - { label: "Ringkasan (muncul di kartu)", name: excerpt, widget: string }
+      - { label: "Kalimat pembuka (opsional)", name: lead, widget: string, required: false }
+      - { label: Tanggal, name: date, widget: datetime }
+      - { label: "Tayangkan sekarang?", name: published, widget: boolean, default: false }
+      - { label: "Isi cerita", name: body, widget: markdown }

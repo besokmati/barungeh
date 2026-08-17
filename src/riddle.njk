@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+title: "Riddle"
+description: "Kumpulan horror riddle Bahasa Indonesia. Jawaban ditahan 7–14 hari supaya komunitas sempat bikin teori sebelum reveal."
+---
+<section class="page-hero"><div class="eyebrow">Riddle</div><h1>Cari apa yang<br><span class="text-red">nggak masuk akal.</span></h1><p>Jawaban resmi ditahan 7–14 hari supaya komunitas punya waktu buat bikin teori. Pilih level, baca pelan, lalu curigai semuanya.</p></section>
+<div class="filterbar"><button class="chip active" data-filter="all">Semua</button><button class="chip" data-filter="mudah">Mudah</button><button class="chip" data-filter="sedang">Sedang</button><button class="chip" data-filter="sulit">Sulit</button><button class="chip" data-filter="ngeh99">99% Gak Ngeh</button></div>
+{% set items = collections.riddlePub %}
+{% if items.length %}<section class="content-grid">
+{% for p in items %}<a class="content-card" data-tags="{{ p.data.difficulty | diffTags }}" href="{{ p.url }}"><div class="top"><span>{{ p.data.category | upper }}</span><span>{{ p.data.difficulty }}/5</span></div><h3>{{ p.data.title }}</h3><p>{{ p.data.excerpt }}</p><div class="bottom"><span>{{ p.data.discussions or 0 }} diskusi</span><span>Reveal {{ p.data.revealDays }} hari</span></div></a>{% endfor %}
+</section>{% else %}<p style="color:#8b8883;padding:40px 0">Belum ada riddle yang tayang. Sebentar lagi.</p>{% endif %}
