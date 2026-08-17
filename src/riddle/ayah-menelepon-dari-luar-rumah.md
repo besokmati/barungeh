@@ -1,5 +1,5 @@
 ---
-title: Telpon dari Ayah ?
+title: Telepon dari Ayah ?
 category: Horror Riddle
 difficulty: 2
 excerpt: Kenapa ayahnya bilang telepon itu terus diangkat dan ditutup?
