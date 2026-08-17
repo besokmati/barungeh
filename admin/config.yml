@@ -1,8 +1,8 @@
 # ============================================================
-#  KONFIG CMS — auth via DecapBridge (PKCE)
+#  KONFIG CMS — BARU NGEH
+#  Auth: DecapBridge (PKCE)
 # ============================================================
 
-# Use DecapBridge PKCE auth (required)
 backend:
   name: git-gateway
   repo: besokmati/barungeh
@@ -12,8 +12,6 @@ backend:
   auth_endpoint: /sites/eb98caab-c457-4e63-8259-f0395d869965/pkce
   auth_token_endpoint: /sites/eb98caab-c457-4e63-8259-f0395d869965/token
   gateway_url: https://gateway.decapbridge.com
-
-  # See who did what (optional)
   commit_messages:
     create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
     update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
@@ -21,57 +19,70 @@ backend:
     uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
     deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
 
-# Enable PKCE fields (optional, recommended)
+# Field PKCE (biar tau siapa yang ngedit)
 auth:
   email_claim: email
   first_name_claim: first_name
   last_name_claim: last_name
   avatar_url_claim: avatar_url
 
+# Info situs
 site_url: https://barungeh.netlify.app
 display_url: https://barungeh.netlify.app
 logo_url: https://barungeh.netlify.app/assets/favicon.png
+locale: 'id'
 
+# Folder buat upload gambar dari CMS
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
 
-locale: 'id'
-
 collections:
+  # ---------- RIDDLE ----------
   - name: riddle
     label: Riddle
     label_singular: Riddle
     folder: src/riddle
     create: true
     slug: "{{slug}}"
-    summary: "{{title}}  [{{#if published}}TAYANG{{else}}draft{{/if}}]"
+    summary: "{{title}} — status: {{fields.published}}"
     sortable_fields: [date, title]
     fields:
       - { label: Judul, name: title, widget: string }
-      - { label: Kategori, name: category, widget: select, default: Horror Riddle,
-          options: [Horror Riddle, Detective, Psychological, Paranormal, Urban Legend, Mystery] }
+      - label: Kategori
+        name: category
+        widget: select
+        default: Horror Riddle
+        options: [Horror Riddle, Detective, Psychological, Paranormal, Urban Legend, Mystery]
       - { label: "Tingkat kesulitan (1-5)", name: difficulty, widget: number, value_type: int, min: 1, max: 5, default: 4 }
       - { label: "Ringkasan (muncul di kartu)", name: excerpt, widget: string }
       - { label: "Kalimat pembuka (opsional)", name: lead, widget: string, required: false }
       - { label: "Reveal setelah (hari)", name: revealDays, widget: number, value_type: int, default: 7 }
       - { label: "Jumlah diskusi (angka tampilan)", name: discussions, widget: number, value_type: int, default: 0, required: false }
-      - { label: "Pilihan jawaban (buat voting)", name: options, widget: list, required: false,
-          field: { label: Pilihan, name: choice, widget: string } }
+      - label: "Pilihan jawaban (buat voting)"
+        name: options
+        widget: list
+        required: false
+        field: { label: Pilihan, name: choice, widget: string }
       - { label: Tanggal, name: date, widget: datetime }
       - { label: "Tayangkan sekarang?", name: published, widget: boolean, default: false }
       - { label: "Isi riddle", name: body, widget: markdown }
+
+  # ---------- CERITA ----------
   - name: cerita
     label: Cerita
     label_singular: Cerita
     folder: src/cerita
     create: true
     slug: "{{slug}}"
-    summary: "{{title}}  [{{#if published}}TAYANG{{else}}draft{{/if}}]"
+    summary: "{{title}} — status: {{fields.published}}"
     sortable_fields: [date, title]
     fields:
       - { label: Judul, name: title, widget: string }
-      - { label: Kategori, name: category, widget: select, default: Horror,
-          options: [Horror, Mystery, Psychological, Urban Legend, Detective, Paranormal] }
+      - label: Kategori
+        name: category
+        widget: select
+        default: Horror
+        options: [Horror, Mystery, Psychological, Urban Legend, Detective, Paranormal]
       - { label: "Ringkasan (muncul di kartu)", name: excerpt, widget: string }
       - { label: "Kalimat pembuka (opsional)", name: lead, widget: string, required: false }
       - { label: Tanggal, name: date, widget: datetime }
