@@ -1,16 +1,17 @@
 ---
-title: "Ayah Menelepon dari Luar Rumah"
-category: "Horror Riddle"
-difficulty: 4
-excerpt: "Kenapa ayahnya bilang telepon itu terus diangkat dan ditutup?"
-lead: "Baca sampai selesai. Ada satu fakta kecil yang membuat situasinya jauh lebih buruk dari kelihatannya."
+title: Telpon dari Ayah ?
+category: Horror Riddle
+difficulty: 2
+excerpt: Kenapa ayahnya bilang telepon itu terus diangkat dan ditutup?
+lead: Baca sampai selesai. Ada satu fakta kecil yang membuat situasinya jauh
+  lebih buruk dari kelihatannya.
 revealDays: 7
-discussions: 391
+discussions: 0
 options:
   - Ada orang lain di rumah
   - Ayahnya bohong
   - Telepon rusak
-date: 2026-08-15
+date: 2026-08-17T11:11:00.000+07:00
 published: true
 ---
 Kau sendirian di rumah, asyik menatap layar laptop, ketika telepon dari ruang tamu tiba-tiba berdering.
