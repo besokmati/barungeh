@@ -5,11 +5,20 @@ ogType: website
 {% set metaDescription = description or excerpt or lead or "Cerita, riddle, misteri, dan kisah horror yang baru terasa aneh setelah lo sadar ada sesuatu yang salah." %}
 
 {% if ogImage %}
-  {% set socialImage = ogImage | absoluteUrl %}
-{% else %}
-  {% set socialImage = site.ogImage %}
-{% endif %}
 
+  {% set socialImage = ogImage | absoluteUrl %}
+
+{% else %}
+
+  {% set bodyImage = content | firstImage %}
+
+  {% if bodyImage %}
+    {% set socialImage = bodyImage | absoluteUrl %}
+  {% else %}
+    {% set socialImage = site.ogImage %}
+  {% endif %}
+
+{% endif %}
 <!doctype html>
 <html lang="id">
 
