@@ -79,7 +79,7 @@ function escapeHtml(s=''){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;
 (function(){
   if(store.get('bn_consent')) return;
   const bar=document.createElement('div'); bar.className='cookiebar';
-  bar.innerHTML='<span>BARU NGEH pakai cookie & penyimpanan lokal buat fitur komunitas dan (nantinya) iklan. <a href="kebijakan-privasi.html">Selengkapnya</a>.</span><button class="btn primary" type="button">Oke, ngerti</button>';
+  bar.innerHTML='<span>BARU NGEH pakai cookie & penyimpanan lokal buat fitur komunitas dan (nantinya) iklan. <a href="/kebijakan-privasi/">Selengkapnya</a>.</span><button class="btn primary" type="button">Oke, ngerti</button>';
   document.body.appendChild(bar);
   bar.querySelector('button').onclick=()=>{store.set('bn_consent','1');bar.remove()};
 })();
