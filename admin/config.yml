@@ -21,6 +21,10 @@ backend:
     deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
 
 
+# ============================================================
+# AUTH
+# ============================================================
+
 auth:
   email_claim: email
   first_name_claim: first_name
@@ -63,6 +67,7 @@ collections:
     create: true
     slug: "{{slug}}"
     summary: "{{title}} — status: {{fields.published}}"
+
     sortable_fields:
       - date
       - title
@@ -97,12 +102,23 @@ collections:
         name: excerpt
         widget: string
 
+      # Thumbnail untuk artikel + Open Graph / social sharing
+      - label: "Gambar / Thumbnail"
+        name: ogImage
+        widget: image
+        required: false
+        choose_url: false
+        media_library:
+          config:
+            multiple: false
+
       - label: "Kalimat pembuka (opsional)"
         name: lead
         widget: string
         required: false
 
-      # Fallback sistem reveal lama
+      # Sistem reveal lama.
+      # Sementara dipertahankan sebagai fallback untuk riddle lama.
       - label: "Reveal setelah (hari)"
         name: revealDays
         widget: number
@@ -110,7 +126,8 @@ collections:
         default: 7
         required: false
 
-      # Sistem reveal baru
+      # Sistem reveal baru.
+      # Semua pengunjung akan melihat waktu reveal yang sama.
       - label: "Tanggal & jam reveal"
         name: revealAt
         widget: datetime
@@ -165,6 +182,7 @@ collections:
     create: true
     slug: "{{slug}}"
     summary: "{{title}} — status: {{fields.published}}"
+
     sortable_fields:
       - date
       - title
@@ -190,6 +208,16 @@ collections:
       - label: "Ringkasan (muncul di kartu)"
         name: excerpt
         widget: string
+
+      # Thumbnail untuk artikel + Open Graph / social sharing
+      - label: "Gambar / Thumbnail"
+        name: ogImage
+        widget: image
+        required: false
+        choose_url: false
+        media_library:
+          config:
+            multiple: false
 
       - label: "Kalimat pembuka (opsional)"
         name: lead
