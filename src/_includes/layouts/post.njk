@@ -2,14 +2,229 @@
 layout: layouts/base.njk
 ogType: article
 ---
+
 <section class="post">
-<div class="eyebrow">{{ category }}{% if difficulty %} • Level {{ difficulty }}/5{% endif %}</div>
-<h1>{{ title }}</h1>
-{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
-<article>{{ content | safe }}</article>
-{% if revealDays %}<div class="reveal-locked"><div class="kicker">Jawaban dikunci</div><h3>Komunitas masih berdiskusi.</h3><p style="color:#8d8984">Reveal otomatis dibuka setelah periode diskusi berakhir.</p><div class="countdown" data-key="bn_reveal_{{ page.fileSlug }}" data-days="{{ revealDays }}"></div></div>{% endif %}
-{% if options %}<div class="filterbar">{% for o in options %}<button class="chip" data-vote="{{ page.fileSlug }}" data-choice="{{ o }}">{{ o }}</button>{% endfor %}</div>{% endif %}
-<div class="hero-actions"><a class="btn primary" href="#discussion">Ikut Diskusi</a><a class="btn ghost" data-share="facebook" href="#">Share ke Facebook</a><a class="btn ghost" data-share="whatsapp" href="#">Share WhatsApp</a></div>
-<div class="ad-slot">Sponsor setelah konten • bukan di tengah paragraf</div>
-<section class="discussion" id="discussion"><div class="section-head"><div><div class="eyebrow">Diskusi komunitas</div><h2 style="font-size:42px">Menurut lo, apa yang sebenarnya terjadi?</h2></div></div><form class="form" id="commentForm"><div class="field"><label>Nama</label><input name="name" placeholder="Anonim juga boleh"></div><div class="field"><label>Teori lo</label><textarea name="comment" required placeholder="Gue curiga karena..."></textarea></div><button class="btn primary">Kirim Teori</button></form><div id="commentList"></div></section>
+
+  <div class="eyebrow">
+    {{ category }}
+    {% if difficulty %} • Level {{ difficulty }}/5{% endif %}
+  </div>
+
+  <h1>{{ title }}</h1>
+
+  {% if lead %}
+    <p class="lead">{{ lead }}</p>
+  {% endif %}
+
+  <article>
+    {{ content | safe }}
+  </article>
+
+
+  {# ======================================================
+     SISTEM REVEAL BARU
+     Semua pengunjung menggunakan tanggal/jam yang sama
+     ====================================================== #}
+
+  {% if revealAt %}
+
+    <div
+      class="reveal-locked"
+      data-reveal-at="{{ revealAt | datetimeISO }}"
+    >
+
+      <div data-reveal-locked>
+
+        <div class="kicker">
+          Jawaban dikunci
+        </div>
+
+        <h3>
+          Komunitas masih berdiskusi.
+        </h3>
+
+        <p style="color:#8d8984">
+          Reveal otomatis dibuka pada waktu yang sudah ditentukan.
+        </p>
+
+        <div
+          class="countdown"
+          data-countdown
+        ></div>
+
+      </div>
+
+
+      <div data-reveal-answer hidden>
+
+        <div class="kicker">
+          Jawaban terbuka
+        </div>
+
+        <h3>
+          Baru ngeh?
+        </h3>
+
+        <p style="white-space:pre-line">
+          {{ answer or "Jawaban belum tersedia." }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+  {# ======================================================
+     FALLBACK SISTEM LAMA
+     Supaya riddle lama tidak rusak
+     ====================================================== #}
+
+  {% elif revealDays %}
+
+    <div class="reveal-locked">
+
+      <div class="kicker">
+        Jawaban dikunci
+      </div>
+
+      <h3>
+        Komunitas masih berdiskusi.
+      </h3>
+
+      <p style="color:#8d8984">
+        Reveal otomatis dibuka setelah periode diskusi berakhir.
+      </p>
+
+      <div
+        class="countdown"
+        data-key="bn_reveal_{{ page.fileSlug }}"
+        data-days="{{ revealDays }}"
+      ></div>
+
+    </div>
+
+  {% endif %}
+
+
+  {# VOTING #}
+
+  {% if options %}
+    <div class="filterbar">
+      {% for o in options %}
+        <button
+          class="chip"
+          data-vote="{{ page.fileSlug }}"
+          data-choice="{{ o }}"
+        >
+          {{ o }}
+        </button>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+  {# ACTION BUTTONS #}
+
+  <div class="hero-actions">
+
+    <a
+      class="btn primary"
+      href="#discussion"
+    >
+      Ikut Diskusi
+    </a>
+
+    <a
+      class="btn ghost"
+      data-share="facebook"
+      href="#"
+    >
+      Share ke Facebook
+    </a>
+
+    <a
+      class="btn ghost"
+      data-share="whatsapp"
+      href="#"
+    >
+      Share WhatsApp
+    </a>
+
+  </div>
+
+
+  <div class="ad-slot">
+    Sponsor setelah konten • bukan di tengah paragraf
+  </div>
+
+
+  {# DISKUSI #}
+
+  <section
+    class="discussion"
+    id="discussion"
+  >
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow">
+          Diskusi komunitas
+        </div>
+
+        <h2 style="font-size:42px">
+          Menurut lo, apa yang sebenarnya terjadi?
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <form
+      class="form"
+      id="commentForm"
+    >
+
+      <div class="field">
+
+        <label>
+          Nama
+        </label>
+
+        <input
+          name="name"
+          placeholder="Anonim juga boleh"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Teori lo
+        </label>
+
+        <textarea
+          name="comment"
+          required
+          placeholder="Gue curiga karena..."
+        ></textarea>
+
+      </div>
+
+
+      <button class="btn primary">
+        Kirim Teori
+      </button>
+
+    </form>
+
+
+    <div id="commentList"></div>
+
+  </section>
+
 </section>
