@@ -17,6 +17,10 @@ module.exports = function(eleventyConfig){
   eleventyConfig.addFilter("pad2", n => String(n).padStart(2,"0"));
   eleventyConfig.addFilter("published", arr => (arr||[]).filter(i => i.data.published));
   eleventyConfig.addFilter("dateISO", d => (d instanceof Date ? d : new Date(d)).toISOString().slice(0,10));
+  eleventyConfig.addFilter("datetimeISO", d => {
+  if (!d) return "";
+  return (d instanceof Date ? d : new Date(d)).toISOString();
+});
 
   eleventyConfig.addCollection("riddlePub", c =>
     c.getFilteredByTag("riddle").filter(i=>i.data.published).sort((a,b)=>b.date-a.date));
