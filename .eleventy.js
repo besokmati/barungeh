@@ -101,6 +101,22 @@ module.exports = function(eleventyConfig) {
     );
   });
 
+    // ========================================================
+  // FIRST IMAGE
+  // Ambil gambar pertama dari isi artikel/riddle
+  // untuk fallback OG Image
+  // ========================================================
+
+  eleventyConfig.addFilter("firstImage", html => {
+    if (!html) return "";
+
+    const match = String(html).match(
+      /<img[^>]+src=["']([^"']+)["']/i
+    );
+
+    return match ? match[1] : "";
+  });
+
 
   // ========================================================
   // COLLECTIONS
