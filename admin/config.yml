@@ -27,9 +27,9 @@ auth:
   avatar_url_claim: avatar_url
 
 # Info situs
-site_url: https://barungeh.netlify.app
-display_url: https://barungeh.netlify.app
-logo_url: https://barungeh.netlify.app/assets/favicon.png
+site_url: https://barungeh.web.id
+display_url: https://barungeh.web.id
+logo_url: https://barungeh.web.id/assets/favicon.png
 locale: 'id'
 
 # Folder buat upload gambar dari CMS
