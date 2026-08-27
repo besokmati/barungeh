@@ -14,6 +14,8 @@ options:
 date: 2026-08-17T11:11:00.000+07:00
 published: true
 ---
+![](/assets/uploads/telepon_ayah.png)
+
 Kau sendirian di rumah, asyik menatap layar laptop, ketika telepon dari ruang tamu tiba-tiba berdering.
 
 Dengan malas kau berjalan ke arah telepon. Namun sebelum sampai, telepon berhenti berdering. Kau kembali ke kamar. Beberapa detik kemudian, telepon kembali berbunyi. Lagi-lagi telepon berhenti sebelum sempat kau angkat.
