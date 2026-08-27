@@ -31,7 +31,7 @@ answer: >-
   Ada dua kemungkinan: gambar di dalam bingkai berubah setelah pesan dikirim, atau foto yang diterima kakaknya berbeda dengan foto yang tersimpan di HP Rak
 discussions: 0
 options: []
-date: 2026-08-27T22:24:00.000+07:00
+date: 2026-08-27T22:26:00.000+07:00
 published: true
 ---
 > Malam itu, Raka menginap sendirian di rumah neneknya yang sudah lama kosong.
