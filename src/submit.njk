@@ -4,8 +4,7 @@ title: "Submit Cerita"
 description: "Kirim cerita horror, riddle, urban legend, atau pengalaman aneh lo ke BARU NGEH."
 ---
 <section class="section"><div class="container submit-wrap"><div class="submit-copy"><div class="eyebrow">Dari komunitas</div><h2>Punya cerita yang bikin orang <span class="text-red">baru ngeh?</span></h2><p>Kirim horror story, riddle, urban legend, atau pengalaman aneh. Tim BARU NGEH akan review sebelum tayang. Nama boleh disamarkan.</p><p style="font-size:12px;color:#5f5c58">Cerita yang masuk kami baca dan seleksi dulu sebelum dipublikasikan.</p></div>
-<form name="submit-cerita" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="https://barungeh.netlify.app/terima-kasih.html" class="form">
-  <input type="hidden" name="form-name" value="submit-cerita">
+<form name="submit-cerita" method="POST" action="/api/submit-cerita" class="form">
   <p hidden><label>Kosongkan kolom ini: <input name="bot-field"></label></p>
   <div class="field"><label>Judul</label><input name="title" required placeholder="Contoh: Telepon Jam 3 Pagi"></div>
   <div class="field"><label>Kategori</label><select name="category"><option>Horror Riddle</option><option>Mystery</option><option>Psychological</option><option>Urban Legend</option><option>Detective</option><option>Paranormal</option></select></div>
